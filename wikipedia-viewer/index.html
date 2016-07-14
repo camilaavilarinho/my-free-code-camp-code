@@ -4,15 +4,22 @@
     <meta charset="utf-8">
     <title></title>
   </head>
-  <body>
+  <body ng-app="wikiapp">
     <section class="intro">
       <h1>Wikipedia Viewer</h1>
     </section>
-    <section class="random">
-      <a href="http://en.wikipedia.org/wiki/Special:Random" target="_blank"><i class="random-article fa fa-random fa-2x"></i><br>Random Article</a>
+    <section class="random-section">
+      <a href="http://en.wikipedia.org/wiki/Special:Random" class= "random" target="_blank"><i class="random-article fa fa-random fa-2x"></i></a>
     </section>
-    <section class="search">
-      <button type="button" class="search-article"><i class="fa fa-search fa-2x"></i><br>Search articles</button>
-    </section>    
+    <section class="search-form" ng-controller="wikicontroller">
+      <input type='text' class='input' ng-keypress="search($event, str)" ng-model="str" value="">
+      <button type="button" class="search"></button>
+    </section>
+    <section class="result" ng-controller="wikicontroller">
+      <div class="result-div" ng-repeat="name in data">
+        <h3 class="title">{{data}}</h3>
+        <span class="description">{{name.last}}</span>
+      </div>
+    </section>
   </body>
 </html>

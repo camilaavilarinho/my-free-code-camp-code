@@ -28,26 +28,22 @@ var app = angular.module('wikiapp', []);
 
 app.controller('wikicontroller', function($scope, $http){
   var url = "";
+  $scope.data = [];
   $scope.search = function($event, str){
     var keyCode = $event.which || $event.keyCode;
     if (keyCode === 13) {
-      url = "https://en.wikipedia.org/w/api.php?action=opensearch&search="+str+"&limit=10&namespace=0&format=jsonfm";
+      /*url = "https://en.wikipedia.org/w/api.php?action=opensearch&search="+str+"&limit=10&namespace=0&format=json";*/
+      url = "https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch="+str+"&format=json&callback=?"
       alert(url);
-      $httpp.get(url).then(function(response){
+      /*$http.get(url).then(function(response){
         this.data = response.data;
-      });
+      });*/
     }
   }
 
-
-  /*$scope.req = [
-    {
-      "name": "Camila",
-      "last": ""
-    }, {
-      "name": "Carol",
-      "last": "Vilarinho"
-    }
-  ];*/
+  $.getJSON(url, function(json) {
+    $scope.data = json;
+    alert(json);
+  });
 
 });

@@ -11,15 +11,19 @@
     <section class="random-section">
       <a href="http://en.wikipedia.org/wiki/Special:Random" class= "random" target="_blank"><i class="random-article fa fa-random fa-2x"></i></a>
     </section>
-    <section class="search-form" ng-controller="wikicontroller">
-      <input type='text' class='input' ng-keypress="search($event, str)" ng-model="str" value="">
-      <button type="button" class="search"></button>
-    </section>
-    <section class="result" ng-controller="wikicontroller">
-      <div class="result-div" ng-repeat="name in data">
-        <h3 class="title">{{data}}</h3>
-        <span class="description">{{name.last}}</span>
-      </div>
-    </section>
-  </body>
+    <section class="search-section" ng-controller="wikicontroller">
+      <section class="search-form">
+        <input type='text' class='input' ng-keypress="search($event, str)" ng-model="str" value="">
+        <button type="button" class="search"></button>
+      </section>
+      <section class="result">
+        <a ng-repeat="obj in data.query.pages" href ="https://en.wikipedia.org/?curid={{obj.pageid}}" target="_blank">
+          <div class="result-div">
+            <h3 class="title">{{obj.title}}</h3>
+            <p class="description">{{obj.extract}}</p>
+          </div>
+        </a>
+      </section>
+    </section> 
+</body>
 </html>

@@ -79,3 +79,23 @@ button{
 .search-form{
   text-align: center;
 }
+
+.result-div{
+  background-color: #2980b9;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-left: 4px solid #ddd;
+  color: #ddd;
+}
+
+.title, .description{
+  padding: 5px;
+}
+
+a{
+  text-decoration: none;
+}
+.result-div:hover{
+  background-color: rgba(52, 73, 94,.5);
+  border-left: 4px solid #34495e;
+}

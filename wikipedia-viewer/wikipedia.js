@@ -2,6 +2,7 @@ function change(){
   $(".search").toggleClass("close");
   if ($('.search').hasClass('close')) {
     $(".input").show();
+    $(".input").focus();
     $(".input").val("");
     $(".title").empty();
     $(".description").empty();
